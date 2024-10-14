@@ -1,0 +1,60 @@
+body {
+    background-color: #004080; /* Warna dasar biru */
+    font-family: Arial, sans-serif; /* Font default, bisa dicustom */
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.album {
+    display: flex;
+    align-items: center;
+}
+
+.photo img {
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+}
+
+.details {
+    margin-left: 20px;
+}
+
+.lyrics, .poem {
+    background-color: rgba(0, 0, 0, 0.7); /* Background hitam agak transparan */
+    padding: 20px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.lyrics #lyrics-content {
+    overflow: hidden;
+    height: 50px; /* Tinggi sesuai dengan satu kalimat lirik */
+    position: relative;
+}
+
+.lyrics .lyric {
+    position: absolute;
+    width: 100%;
+    transition: transform 0.5s;
+    opacity: 0;
+}
+
+.photo-blur img {
+    width: 100%;
+    max-width: 600px;
+    filter: blur(5px);
+    transition: filter 0.3s;
+}
+
+.photo-blur img:hover {
+    filter: blur(0);
+}
