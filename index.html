@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music and Poetry</title>
     <style>
-        /* CSS di sini */
         body {
-            background-color: #004080; /* Warna dasar biru */
-            font-family: Bebas-Neue; /* Font default, bisa dicustom */
+            background-color: #004080;
+            font-family: Sofia-Regular; 
             color: white;
         }
 
@@ -35,7 +34,7 @@
         }
 
         .lyrics, .poem {
-            background-color: rgba(0, 0, 0, 0.7); /* Background hitam agak transparan */
+            background-color: rgba(0, 0, 0, 0.7); 
             padding: 20px;
             margin: 20px 0;
             width: 100%;
@@ -45,7 +44,7 @@
 
         .lyrics #lyrics-content {
             overflow: hidden;
-            height: auto; /* Membiarkan konten berkembang secara otomatis */
+            height: auto; 
         }
 
         .lyrics .lyric {
@@ -88,12 +87,12 @@
         </div>
         
         <div class="photo-blur">
-            <img src="jangs.png" alt="Foto Awalnya Blur, Pas di-tap Langsung Keliatan Jelas">
+            <img src="jangs.png" alt="NT bangg? wkwk">
         </div>
     </div>
     <audio id="background-music" src="Steal My Girls.mp3" loop></audio>
     <script>
-        // JavaScript di sini
+        // JS //
         document.addEventListener('DOMContentLoaded', function() {
             const songTitle = document.getElementById("song-title");
             const backgroundMusic = document.getElementById("background-music");
@@ -128,23 +127,23 @@
                 });
 
                 if (!displayed) {
-                    lyricsContainer.innerHTML = ''; // Clear lyrics if none match
+                    lyricsContainer.innerHTML = ''; 
                 }
             }
 
             function handleMusicPlayPause() {
                 if (backgroundMusic.paused) {
                     backgroundMusic.play();
-                    updateInterval = setInterval(updateLyrics, 100); // Update lirik setiap 100ms
+                    updateInterval = setInterval(updateLyrics, 100); 
                 } else {
                     backgroundMusic.pause();
-                    clearInterval(updateInterval); // Stop updating lyrics
-                    handleMusicEnd(); // Hide lyrics when music is paused
+                    clearInterval(updateInterval); 
+                    handleMusicEnd(); 
                 }
             }
 
             function handleMusicEnd() {
-                lyricsContainer.innerHTML = ''; // Clear lyrics when music ends
+                lyricsContainer.innerHTML = ''; 
             }
 
             songTitle.addEventListener("click", handleMusicPlayPause);
@@ -152,7 +151,7 @@
             songTitle.addEventListener("dblclick", function() {
                 backgroundMusic.pause();
                 backgroundMusic.currentTime = 0;
-                handleMusicEnd(); // Reset lirik ketika musik di-reset
+                handleMusicEnd(); 
             });
 
             backgroundMusic.addEventListener('ended', handleMusicEnd);
@@ -160,7 +159,7 @@
 
             backgroundMusic.addEventListener('timeupdate', updateLyrics);
 
-            updateLyrics(); // Tampilkan lirik pertama saat halaman dimuat
+            updateLyrics(); 
         });
     </script>
 </body>
