@@ -6,7 +6,150 @@
     <title>Music and Poetry</title>
     <style>
         body {
-            background-color: #004080;
+            background-image: url('bg.gif'); 
+            background-size: cover; 
+            background-position: center; 
+            font-family: Sofia-Regular; 
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .album {
+            display: flex;
+            align-items: center;
+        }
+
+        .photo img {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+
+        .details {
+            margin-left: 20px;
+        }
+
+        .lyrics, .poem {
+            background-color: rgba(0, 0, 0, 0.7); 
+            padding: 20px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .lyrics #lyrics-content {
+            overflow: hidden;
+            height: auto; 
+        }
+
+        .lyrics .lyric {
+            transition: opacity 0.5s;
+        }
+
+        .photo-blur img {
+            width: 100%;
+            max-width: 600px;
+            filter: blur(5px);
+            transition: filter 0.3s;
+        }
+
+        .photo-blur img:hover {
+            filter: blur(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="album">
+            <div class="photo">
+                <img src="taipeii.png" alt="Foto Album Lagunya">
+            </div>
+            <div class="details">
+                <h1 id="song-title">Steal My Girl</h1>
+                <h2>One Direction</h2>
+            </div>
+        </div>
+        
+        <div class="lyrics">
+            <h3>LIRIK</h3>
+            <div id="lyrics-content"></div>
+        </div>
+        
+        <div class="poem">
+            <h3>JUDUL PUISI</h3>
+            <p><strong>Author: Kai</strong></p>
+            <p>Isi Puisi</p>
+        </div>
+        
+        <div class="photo-blur">
+            <img src="jangs.png" alt="NT bangg? wkwk">
+        </div>
+    </div>
+    <audio id="background-music" src="Steal My Girls.mp3" loop></audio>
+    <script>
+        // JS //
+        document.addEventListener('DOMContentLoaded', function() {
+            const songTitle = document.getElementById("song-title");
+            const backgroundMusic = document.getElementById("background-music");
+            const lyricsContainer = document.getElementById("lyrics-content");
+
+            // Data lirik
+            const lyrics = [
+                { text: "She's been my queen", time: 2 },
+                { text: "Since we were sixteen", time: 3 },
+                { text: "We want the same things", time: 5 },
+                { text: "We dream the same dreams", time: 7 },
+                { text: "Alright, alright", time: 8 },
+                { text: "I got it all", time: 15 },
+                { text: "'Cause she is the one", time: 16 },
+                { text: "Her mum calls me love", time: 18 },
+                { text: "Her dad calls me son", time: 19 },
+                { text: "Alright, alright", time: 21 },
+                { text: "I know, I know, I know for sure", time: 27 },
+            ];
+
+            let updateInterval;
+
+            function updateLyrics() {
+                const currentTime = backgroundMusic.currentTime;
+                let displayed = false;
+
+                lyrics.forEach((lyric, index) => {
+                    if (currentTime >= lyric.time && (!lyrics[index + 1] || currentTime < lyrics[index + 1].time)) {
+                        lyricsContainer.innerHTML = `<p class="lyric">${lyric.text}</p>`;
+                        displayed = true;
+                    }
+                });
+
+                if (!displayed) {
+                    lyricsContainer.innerHTML = ''; 
+                }
+            }
+
+            function handleMusicPlayPause() {
+                if (backgroundMusic.paused) {
+                    backgroundMusic.play();
+                    updateInterval = setInterval(updateLyrics, 100); 
+                } else {
+                    backgroundMusic.pause();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music and Poetry</title>
+    <style>
+        body {
+            background-image: url('bg.gif'); 
+            background-size: cover; 
+            background-position: center; 
             font-family: Sofia-Regular; 
             color: white;
         }
